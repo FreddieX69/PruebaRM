@@ -25,7 +25,6 @@ class UsuarioController extends Controller
      */
     public function index(){
         $usuarios = Usuario::with('rol','estado')->get();
-       // $email = $request->session()->get('email');
         return view('usuarios.index')->with('usuarios',$usuarios); 
     }
 
@@ -56,7 +55,6 @@ class UsuarioController extends Controller
         $for = $usuario->email;
         
         Mail::send('mails.contrasenia',$usuario->toArray(), function($msj) use($subject,$for){
-            $msj->from("fredyxalin30@gmail.com","Registro Research Mobile");
             $msj->subject($subject);
             $msj->to($for);
         });

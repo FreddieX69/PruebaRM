@@ -23,7 +23,6 @@ class EstadoController extends Controller
         $for = $usuario->email;
         $usuario->save();
         Mail::send('mails.estado',$usuario->toArray(), function($msj) use($subject,$for){
-            $msj->from("fredyxalin30@gmail.com","Registro Research Mobile");
             $msj->subject($subject);
             $msj->to($for);
         });
