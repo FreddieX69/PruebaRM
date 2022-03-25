@@ -19,6 +19,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
+        $roles = ['administrador','operador','solicitante'];
+        foreach ($roles as $rol) {
+            Rol::create([
+                'nombre_rol' => $rol,
+            ]);
+        }
+
+        $estados = ['rechazado','aceptado','pendiente'];
+        foreach ($estados as $estado) {
+            Estado::create([
+                'nombre_estado' => $estado,
+            ]);
+        }
+        
         Usuario::create([
             'primer_nombre' => 'Fredy',
             'segundo_nombre' => 'Alexander',
@@ -35,24 +49,8 @@ class DatabaseSeeder extends Seeder
             'rol_id'=>1,
             'estado_id'=>2
         ]);
-        
-        
-        Usuario::factory(15)->create();
-        
-        $roles = ['administrador','operador','solicitante'];
-        foreach ($roles as $rol) {
-            Rol::create([
-                'nombre_rol' => $rol,
-            ]);
-        }
 
-        $estados = ['rechazado','aceptado','pendiente'];
-        foreach ($estados as $estado) {
-            Estado::create([
-                'nombre_estado' => $estado,
-            ]);
-        }
-        
+        Usuario::factory(15)->create();
     }
     
 }
